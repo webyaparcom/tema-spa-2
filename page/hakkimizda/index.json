@@ -1,0 +1,47 @@
+{
+  "name": {
+    "tr": "Mekân",
+    "en": "The house",
+    "ar": "المكان"
+  },
+  "status": "play",
+  "category": "",
+  "id": "hakkimizda",
+  "url": "",
+  "path": "hakkimizda",
+  "index": 1,
+  "icon": "info",
+  "desing": {
+    "header": [],
+    "body": [
+      "8x3dg4",
+      "6npidj"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Hamam, masaj odaları ve zeytin bahçesi; misafir notları (kurgusal).",
+    "en": "The hammam, massage rooms and olive garden; guest notes (fictional).",
+    "ar": "الحمّام وغرف التدليك وحديقة الزيتون؛ ملاحظات الضيوف (افتراضية)."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Mekân",
+    "en": "The house",
+    "ar": "المكان"
+  },
+  "keyword": {
+    "tr": "hakkımızda",
+    "en": "about",
+    "ar": "من نحن"
+  },
+  "text": {},
+  "update": "2026-11-16T18:05:42.923Z",
+  "date": "2026-10-30"
+}

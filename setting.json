@@ -1,0 +1,54 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Zeytinlik Hamam & Spa: Gaziantep’te taş hamam, kese-köpük, zeytinyağlı masaj ve yüz bakımı ritüelleri. En yakın boş saati seçin. Demo site; içerik kurgusaldır.",
+    "en": "Zeytinlik Hammam & Spa: stone hammam, scrub and foam, olive-oil massage and facial rituals in Gaziantep. Pick the nearest free slot. Demo site; content is fictional.",
+    "ar": "زيتونلك حمّام وسبا: حمّام حجري وتقشير ورغوة وتدليك بزيت الزيتون وطقوس للعناية بالوجه في غازي عنتاب. اختر أقرب موعد متاح. موقع تجريبي؛ المحتوى افتراضي."
+  },
+  "keyword": {
+    "tr": "spa, hamam, türk hamamı, kese köpük, masaj, yüz bakımı, gaziantep",
+    "en": "spa, hammam, turkish bath, scrub and foam, massage, facial, gaziantep",
+    "ar": "سبا، حمّام، حمّام تركي، تقشير ورغوة، تدليك، عناية بالوجه، غازي عنتاب"
+  },
+  "category": "Kurumsal",
+  "name": "Zeytinlik Spa",
+  "domain": "spa-2.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "publishMode": "static",
+  "font": {
+    "body": "source-sans-3",
+    "heading": "fraunces",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-naskh-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "theme_color": "#5F6E3E",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "4px",
+    "--mx-radius-md": "6px",
+    "--mx-radius-lg": "8px",
+    "--mx-radius-xl": "11px"
+  },
+  "icon": "icon.png"
+}

@@ -1,0 +1,125 @@
+<section class="modulex-spa-rituel-serit{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-spa-rituel-serit-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* spa-rituel-serit — tanitim-numarali/tanitim-serit-maddeler'in eşit madde satırlarından ve otopark-sure-cetveli'nin tek eksen cetvelinden farkı: her kayıt kendi içinde süre-orantılı yığılmış bir şerit taşır (paket başına zaman bütçesi), toplam süre adımlardan türetilir ve adım seçimi açıklama satırını değiştirir. */
+  .modulex-spa-rituel-serit { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-spa-rituel-serit *, .modulex-spa-rituel-serit *::before, .modulex-spa-rituel-serit *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-spa-rituel-serit :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-spa-rituel-serit :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-spa-rituel-serit :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-spa-rituel-serit :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-spa-rituel-serit img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-spa-rituel-serit) img { height: auto; }
+  .modulex-spa-rituel-serit [hidden] { display: none !important; }
+  .modulex-spa-rituel-serit :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-spa-rituel-serit :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-spa-rituel-serit-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-spa-rituel-serit-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-spa-rituel-serit--bassiz .modulex-spa-rituel-serit-bas { display: none; }
+  .modulex-spa-rituel-serit-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-spa-rituel-serit-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-spa-rituel-serit-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-spa-rituel-serit-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-spa-rituel-serit-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-spa-rituel-serit-dugme:hover { transform: translateY(-2px); }
+  .modulex-spa-rituel-serit-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-spa-rituel-serit-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-spa-rituel-serit-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-spa-rituel-serit-giris { display: grid; justify-items: center; gap: 14px; max-width: 720px; margin-inline: auto; margin-block-end: clamp(30px, 4vw, 48px); text-align: center; }
+  .modulex-spa-rituel-serit-paketler { display: grid; gap: 18px; }
+  .modulex-spa-rituel-serit-paket { display: grid; grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2fr); gap: clamp(18px, 3vw, 40px); align-items: center; padding: clamp(18px, 2.6vw, 28px); border-radius: calc(--yuvarlak-- * 1.4); background: --bg--; box-shadow: 0 20px 44px -40px color-mix(in srgb, --text-- 70%, transparent); transition: box-shadow 0.3s ease; }
+  .modulex-spa-rituel-serit-paket:hover { box-shadow: 0 26px 50px -36px color-mix(in srgb, --text-- 70%, transparent); }
+  .modulex-spa-rituel-serit-paket:not(:has(.modulex-spa-rituel-serit-zaman)) { grid-template-columns: minmax(0, 1fr); }
+  .modulex-spa-rituel-serit-bilgi { display: flex; align-items: flex-start; gap: 14px; }
+  .modulex-spa-rituel-serit-pik { display: grid; place-items: center; flex: none; width: 52px; height: 52px; border-radius: 50% 50% 50% 12px; background: color-mix(in srgb, --accent-- 16%, transparent); color: --accentInk--; font-size: 28px; }
+  .modulex-spa-rituel-serit-pyazi { display: grid; gap: 6px; }
+  .modulex-spa-rituel-serit-pad { font-family: var(--mx-font-heading, inherit); font-size: 1.2rem; font-weight: 750; line-height: 1.25; }
+  .modulex-spa-rituel-serit-rozet { justify-self: start; padding: 2px 10px; border-radius: 999px; background: --text--; color: --bg--; font-size: 0.7rem; font-weight: 800; }
+  .modulex-spa-rituel-serit-pmetin { color: --muted--; font-size: 0.88rem; }
+  .modulex-spa-rituel-serit-psay { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+  .modulex-spa-rituel-serit-ptop { display: inline-flex; align-items: center; gap: 5px; color: --muted--; font-size: 0.88rem; font-weight: 700; }
+  .modulex-spa-rituel-serit-sik { font-size: 17px; }
+  .modulex-spa-rituel-serit-pfiyat { color: --accentInk--; font-size: 1.2rem; font-weight: 850; font-variant-numeric: tabular-nums; }
+  .modulex-spa-rituel-serit-zaman { display: grid; gap: 12px; min-width: 0; }
+  .modulex-spa-rituel-serit-serit { display: flex; gap: 4px; min-width: 0; }
+  .modulex-spa-rituel-serit-bolum { flex: var(--fb-dk) 1 0; min-width: 0; }
+  .modulex-spa-rituel-serit-adim { display: grid; align-content: center; gap: 2px; width: 100%; min-height: 72px; padding: 10px 12px; border: 0; border-radius: 10px; background: --accent--; color: --accentText--; font: inherit; text-align: start; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-spa-rituel-serit-bolum:first-child .modulex-spa-rituel-serit-adim { border-start-start-radius: 999px; border-end-start-radius: 999px; padding-inline-start: 20px; }
+  .modulex-spa-rituel-serit-bolum:last-child .modulex-spa-rituel-serit-adim { border-start-end-radius: 999px; border-end-end-radius: 999px; padding-inline-end: 20px; }
+  .modulex-spa-rituel-serit-bolum--t1 .modulex-spa-rituel-serit-adim { background: --text--; color: --bg--; }
+  .modulex-spa-rituel-serit-bolum--t2 .modulex-spa-rituel-serit-adim { background: --kartBg--; color: --text--; box-shadow: inset 0 0 0 2px --accent--; }
+  .modulex-spa-rituel-serit-adim:hover, .modulex-spa-rituel-serit-adim[aria-pressed="true"] { transform: translateY(-4px); }
+  .modulex-spa-rituel-serit-adim[aria-pressed="true"] { box-shadow: 0 0 0 3px --bg--, 0 0 0 5px --accentInk--; }
+  .modulex-spa-rituel-serit-aad { overflow: hidden; font-size: 0.86rem; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+  .modulex-spa-rituel-serit-adk { font-size: 0.76rem; font-variant-numeric: tabular-nums; }
+  .modulex-spa-rituel-serit-acik { min-height: 1.6em; padding-inline-start: 14px; border-inline-start: 3px solid --accent--; font-size: 0.92rem; }
+  .modulex-spa-rituel-serit-acik.modulex-spa-rituel-serit--tazele { animation: modulex-spa-rituel-serit-sizil 0.4s ease both; }
+  .modulex-spa-rituel-serit-liste { display: grid; gap: 4px; color: --muted--; font-size: 0.86rem; }
+  .modulex-spa-rituel-serit-liste strong { color: --text--; }
+  .modulex-spa-rituel-serit--js .modulex-spa-rituel-serit-liste { display: none; }
+  .modulex-spa-rituel-serit-paketler + .modulex-spa-rituel-serit-cta { justify-content: center; margin-block-start: 30px; }
+  @keyframes modulex-spa-rituel-serit-sizil { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 768px) {
+    .modulex-spa-rituel-serit-paket { grid-template-columns: minmax(0, 1fr); }
+    .modulex-spa-rituel-serit-serit { flex-direction: column; }
+    .modulex-spa-rituel-serit-bolum { flex: none; }
+    .modulex-spa-rituel-serit-adim { min-height: calc(var(--fb-dk) * 1.3px + 30px); grid-auto-flow: column; justify-content: space-between; align-items: center; }
+    .modulex-spa-rituel-serit-bolum:first-child .modulex-spa-rituel-serit-adim { border-radius: 22px 22px 10px 10px; padding-inline-start: 12px; }
+    .modulex-spa-rituel-serit-bolum:last-child .modulex-spa-rituel-serit-adim { border-radius: 10px 10px 22px 22px; padding-inline-end: 12px; }
+  }
+  .modulex-spa-rituel-serit-bag { color: inherit; text-decoration: none; }
+  .modulex-spa-rituel-serit-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-spa-rituel-serit-mbaslik { font-size: 1.05rem; font-weight: 700; }
+  .modulex-spa-rituel-serit-mmetin { color: --muted--; font-size: 0.95rem; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-spa-rituel-serit :is(.modulex-spa-rituel-serit-baslik, .modulex-spa-rituel-serit-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-spa-rituel-serit-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-spa-rituel-serit { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-spa-rituel-serit *, .modulex-spa-rituel-serit *::before, .modulex-spa-rituel-serit *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-spa-rituel-serit";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const rituelAdim = (s, P) => {
+        const paket = [...s.querySelectorAll("[data-paket]")];
+        if (!paket.length) return;
+        s.classList.add(P + "--js");
+        paket.forEach((k) => {
+          const b = [...k.querySelectorAll("[data-adim]")];
+          const c = k.querySelector("[data-acik]");
+          if (!b.length || !c) return;
+          c.hidden = false;
+          const sec = (i) => {
+            b.forEach((x, j) => x.setAttribute("aria-pressed", String(j === i)));
+            const st = document.createElement("strong");
+            st.textContent = b[i].dataset.ad || "";
+            c.replaceChildren(st, document.createTextNode(b[i].dataset.ek ? " " + b[i].dataset.ek : ""));
+            c.classList.remove(P + "--tazele");
+            void c.offsetWidth;
+            c.classList.add(P + "--tazele");
+          };
+          b.forEach((x, i) => { x.addEventListener("click", () => sec(i)); x.addEventListener("mouseenter", () => sec(i)); x.addEventListener("focus", () => sec(i)); });
+          sec(0);
+        });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      rituelAdim(s, P, az);
+    });
+  })();
+</script>

@@ -1,0 +1,75 @@
+<section class="modulex-cagri-nefes{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-cagri-nefes-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* cagri-nefes — cagri-hale başlık arkasında ışık nabzı, cagri-damla biçim değiştiren lekedir; bu modülde hareketin kendisi bir nefes egzersizi (genişle/daral + yazı değişimi) — sakinleştirici ritimle randevuya çağırır, ailede zamanlanmış metin değişimi yok. */
+  .modulex-cagri-nefes { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --yaziRenk--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-cagri-nefes *, .modulex-cagri-nefes *::before, .modulex-cagri-nefes *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-cagri-nefes :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-cagri-nefes :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-cagri-nefes :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-cagri-nefes :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-cagri-nefes img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-cagri-nefes) img { height: auto; }
+  .modulex-cagri-nefes [hidden] { display: none !important; }
+  .modulex-cagri-nefes :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-cagri-nefes :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-cagri-nefes-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-cagri-nefes-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-cagri-nefes--bassiz .modulex-cagri-nefes-bas { display: none; }
+  .modulex-cagri-nefes-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-cagri-nefes-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-cagri-nefes-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-cagri-nefes-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-cagri-nefes-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-cagri-nefes-dugme:hover { transform: translateY(-2px); }
+  .modulex-cagri-nefes-dugme--ikincil { background: transparent; color: --yaziRenk--; border-color: --cizgi--; }
+  .modulex-cagri-nefes-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-cagri-nefes-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-cagri-nefes-sahne { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: clamp(32px, 6vw, 96px); }
+  .modulex-cagri-nefes-nefes { display: grid; place-items: center; width: clamp(220px, 26vw, 330px); aspect-ratio: 1; }
+  .modulex-cagri-nefes-dalga, .modulex-cagri-nefes-cekirdek { grid-area: 1 / 1; border-radius: 50%; }
+  .modulex-cagri-nefes-dalga { width: 100%; height: 100%; background: color-mix(in srgb, --accent-- 10%, transparent); animation: modulex-cagri-nefes-soluk --sure-- ease-in-out infinite; }
+  .modulex-cagri-nefes-dalga--ic { width: 80%; height: 80%; background: color-mix(in srgb, --accent-- 18%, transparent); animation-delay: calc(--sure-- / -20); }
+  .modulex-cagri-nefes-cekirdek { display: grid; place-items: center; width: 58%; height: 58%; background: --accent--; color: --accentText--; box-shadow: 0 24px 50px -24px color-mix(in srgb, --accent-- 80%, transparent); animation: modulex-cagri-nefes-soluk --sure-- ease-in-out infinite; }
+  .modulex-cagri-nefes-nal, .modulex-cagri-nefes-nver { grid-area: 1 / 1; padding: 10px; font-size: clamp(1rem, 1.6vw, 1.2rem); font-weight: 750; line-height: 1.25; text-align: center; }
+  .modulex-cagri-nefes-nal { animation: modulex-cagri-nefes-al --sure-- linear infinite; }
+  .modulex-cagri-nefes-nver { visibility: hidden; animation: modulex-cagri-nefes-ver --sure-- linear infinite; }
+  .modulex-cagri-nefes-nikon { font-size: 64px; }
+  .modulex-cagri-nefes-yazi { display: grid; gap: 14px; justify-items: start; }
+  @keyframes modulex-cagri-nefes-soluk { 0%, 100% { transform: scale(0.78); } 50% { transform: scale(1); } }
+  @keyframes modulex-cagri-nefes-al { 0%, 49.9% { visibility: visible; } 50%, 100% { visibility: hidden; } }
+  @keyframes modulex-cagri-nefes-ver { 0%, 49.9% { visibility: hidden; } 50%, 100% { visibility: visible; } }
+  @media (max-width: 768px) {
+    .modulex-cagri-nefes-sahne { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+    .modulex-cagri-nefes-nefes { width: min(68vw, 250px); }
+  }
+  .modulex-cagri-nefes-wasvg { width: 1.25em; height: 1.25em; flex: none; }
+  .modulex-cagri-nefes-maddeler { display: grid; gap: 12px; }
+  .modulex-cagri-nefes-madde { display: flex; align-items: flex-start; gap: 12px; }
+  .modulex-cagri-nefes-mikon { flex: none; color: --accentInk--; font-size: 24px; }
+  .modulex-cagri-nefes-myazi { display: grid; gap: 2px; }
+  .modulex-cagri-nefes-myazi strong { font-weight: 700; }
+  .modulex-cagri-nefes-myazi small { color: --muted--; font-size: 0.92rem; }
+  .modulex-cagri-nefes-not { color: --muted--; font-size: 0.9rem; }
+  .modulex-cagri-nefes-saat { display: flex; align-items: center; gap: 8px; color: --muted--; font-size: 0.95rem; }
+  .modulex-cagri-nefes-saat .material-symbols-outlined { font-size: 20px; color: --accentInk--; }
+  .modulex-cagri-nefes-metin { max-width: 62ch; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-nefes :is(.modulex-cagri-nefes-baslik, .modulex-cagri-nefes-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-nefes-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-cagri-nefes { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-cagri-nefes *, .modulex-cagri-nefes *::before, .modulex-cagri-nefes *::after { animation: none !important; transition: none !important; }
+  }
+</style>

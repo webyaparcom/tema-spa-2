@@ -1,0 +1,159 @@
+<section class="modulex-yorum-hikaye-ekran{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-yorum-hikaye-ekran-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* yorum-hikaye-ekran — Sosyal medya hikâye metaforu ve zamanlı otomatik geçiş: yorum-sekme-kisi / yorum-avatar-yorunge seçilene kadar bekler, burada ilerleme çubuğu süreyi gösterir ve kendiliğinden ilerler; yorum-portre-ray'in yatay rayından farklı olarak tek ekran, dokunma bölgeleriyle gezilir. */
+  .modulex-yorum-hikaye-ekran { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-yorum-hikaye-ekran *, .modulex-yorum-hikaye-ekran *::before, .modulex-yorum-hikaye-ekran *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-yorum-hikaye-ekran :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-yorum-hikaye-ekran :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-yorum-hikaye-ekran :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-yorum-hikaye-ekran :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-yorum-hikaye-ekran img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-yorum-hikaye-ekran) img { height: auto; }
+  .modulex-yorum-hikaye-ekran [hidden] { display: none !important; }
+  .modulex-yorum-hikaye-ekran :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-yorum-hikaye-ekran :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-yorum-hikaye-ekran-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-yorum-hikaye-ekran-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-yorum-hikaye-ekran--bassiz .modulex-yorum-hikaye-ekran-bas { display: none; }
+  .modulex-yorum-hikaye-ekran-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-yorum-hikaye-ekran-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-yorum-hikaye-ekran-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-yorum-hikaye-ekran-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-yorum-hikaye-ekran-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-yorum-hikaye-ekran-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-yorum-hikaye-ekran-dugme:hover { transform: translateY(-2px); }
+  .modulex-yorum-hikaye-ekran-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-yorum-hikaye-ekran-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-yorum-hikaye-ekran-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-yorum-hikaye-ekran-ad { font-weight: 700; }
+  .modulex-yorum-hikaye-ekran-kisi { display: grid; gap: 2px; min-width: 0; }
+  .modulex-yorum-hikaye-ekran-unvan { color: --muted--; font-size: 0.88rem; line-height: 1.45; }
+  .modulex-yorum-hikaye-ekran-puan { display: flex; gap: 2px; color: --yildiz--; }
+  .modulex-yorum-hikaye-ekran-puan .material-symbols-outlined { font-size: 20px; font-variation-settings: "FILL" 1; }
+  .modulex-yorum-hikaye-ekran-yildiz--bos { opacity: 0.3; }
+  .modulex-yorum-hikaye-ekran-avatar { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+  .modulex-yorum-hikaye-ekran-harf { display: inline-grid; place-items: center; background: color-mix(in srgb, --accent-- 18%, --kartBg--); color: --accentInk--; font-weight: 800; letter-spacing: 0.02em; }
+  .modulex-yorum-hikaye-ekran-yazar { display: flex; align-items: center; gap: 12px; }
+
+  .modulex-yorum-hikaye-ekran-halkalar { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-block-end: 26px; }
+  .modulex-yorum-hikaye-ekran:not(.modulex-yorum-hikaye-ekran--js) .modulex-yorum-hikaye-ekran-halkalar { display: none; }
+  .modulex-yorum-hikaye-ekran-halka { display: grid; justify-items: center; gap: 8px; width: 76px; padding: 4px 0 0; border: 0; background: none; color: --text--; font: inherit; }
+  .modulex-yorum-hikaye-ekran-hav { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; font-size: 1rem; box-shadow: 0 0 0 3px --bg--, 0 0 0 6px --accent--; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .modulex-yorum-hikaye-ekran-halka--goruldu .modulex-yorum-hikaye-ekran-hav { box-shadow: 0 0 0 3px --bg--, 0 0 0 5px --cizgi--; }
+  .modulex-yorum-hikaye-ekran-halka[aria-current="true"] .modulex-yorum-hikaye-ekran-hav { transform: scale(1.08); }
+  .modulex-yorum-hikaye-ekran-halka:hover .modulex-yorum-hikaye-ekran-hav { transform: translateY(-3px); }
+  .modulex-yorum-hikaye-ekran-hk-ad { max-width: 100%; overflow: hidden; font-size: 0.78rem; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+  .modulex-yorum-hikaye-ekran-cerceve { position: relative; max-width: 410px; margin-inline: auto; padding: 14px; border-radius: 42px; background: --text--; box-shadow: 0 46px 70px -44px color-mix(in srgb, --text-- 85%, transparent); }
+  .modulex-yorum-hikaye-ekran:not(.modulex-yorum-hikaye-ekran--js) .modulex-yorum-hikaye-ekran-cerceve { max-width: 640px; padding: 0; background: none; box-shadow: none; }
+  .modulex-yorum-hikaye-ekran-cubuklar { position: absolute; inset-block-start: 28px; inset-inline: 32px; z-index: 3; display: flex; gap: 5px; }
+  .modulex-yorum-hikaye-ekran-parca { flex: 1; height: 3px; overflow: hidden; border-radius: 99px; background: color-mix(in srgb, --vurguText-- 35%, transparent); }
+  .modulex-yorum-hikaye-ekran-dolum { display: block; height: 100%; background: --vurguText--; transform: scaleX(0); transform-origin: 0 50%; }
+  [dir="rtl"] .modulex-yorum-hikaye-ekran-dolum { transform-origin: 100% 50%; }
+  .modulex-yorum-hikaye-ekran-parca--bitti .modulex-yorum-hikaye-ekran-dolum, .modulex-yorum-hikaye-ekran-parca--etkin .modulex-yorum-hikaye-ekran-dolum { transform: none; }
+  .modulex-yorum-hikaye-ekran-parca--etkin .modulex-yorum-hikaye-ekran-dolum { animation: modulex-yorum-hikaye-ekran-dol 6.5s linear both; }
+  .modulex-yorum-hikaye-ekran:is(.modulex-yorum-hikaye-ekran--dur, .modulex-yorum-hikaye-ekran--disarda) .modulex-yorum-hikaye-ekran-dolum, .modulex-yorum-hikaye-ekran-cerceve:is(:hover, :focus-within) .modulex-yorum-hikaye-ekran-dolum { animation-play-state: paused; }
+  @keyframes modulex-yorum-hikaye-ekran-dol { from { transform: scaleX(0); } to { transform: none; } }
+  .modulex-yorum-hikaye-ekran-hikayeler { display: grid; gap: 16px; }
+  .modulex-yorum-hikaye-ekran--js .modulex-yorum-hikaye-ekran-hikayeler { gap: 0; overflow: hidden; border-radius: 30px; }
+  .modulex-yorum-hikaye-ekran-hikaye { display: grid; }
+  .modulex-yorum-hikaye-ekran--js .modulex-yorum-hikaye-ekran-hikaye { grid-area: 1 / 1; visibility: hidden; transform: scale(0.95); transition: transform 0.45s ease, visibility 0s linear 0.45s; }
+  .modulex-yorum-hikaye-ekran--js .modulex-yorum-hikaye-ekran-hikaye--etkin { visibility: visible; transform: none; transition: transform 0.45s ease, visibility 0s; }
+  .modulex-yorum-hikaye-ekran-sahne { display: grid; grid-template-rows: auto 1fr auto; gap: 22px; min-height: 580px; padding: 66px 30px 40px; border-radius: 30px; background-color: --vurguBg--; color: --vurguText--; }
+  .modulex-yorum-hikaye-ekran:not(.modulex-yorum-hikaye-ekran--js) .modulex-yorum-hikaye-ekran-sahne { min-height: 0; padding-block-start: 30px; }
+  .modulex-yorum-hikaye-ekran-hikaye:nth-child(3n + 2) .modulex-yorum-hikaye-ekran-sahne { background-color: color-mix(in srgb, --vurguBg-- 70%, --text--); }
+  .modulex-yorum-hikaye-ekran-hikaye:nth-child(3n) .modulex-yorum-hikaye-ekran-sahne { background-color: color-mix(in srgb, --vurguBg-- 52%, --text--); }
+  .modulex-yorum-hikaye-ekran-hbas { display: flex; align-items: center; gap: 10px; padding-inline-end: 34px; }
+  .modulex-yorum-hikaye-ekran-hbas .modulex-yorum-hikaye-ekran-unvan, .modulex-yorum-hikaye-ekran-sahne .modulex-yorum-hikaye-ekran-puan { color: inherit; }
+  .modulex-yorum-hikaye-ekran-sahne .modulex-yorum-hikaye-ekran-harf { background: color-mix(in srgb, --vurguText-- 20%, transparent); color: inherit; }
+  .modulex-yorum-hikaye-ekran-avatar { width: 42px; height: 42px; font-size: 0.8rem; box-shadow: 0 0 0 2px --vurguText--; }
+  .modulex-yorum-hikaye-ekran-zaman { margin-inline-start: auto; font-size: 0.8rem; font-weight: 650; white-space: nowrap; }
+  .modulex-yorum-hikaye-ekran-orta { display: grid; align-content: center; gap: 14px; }
+  .modulex-yorum-hikaye-ekran-hbaslik { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-yorum-hikaye-ekran-alinti { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.4rem, 2.6vw, 1.8rem); font-weight: 650; line-height: 1.35; }
+  .modulex-yorum-hikaye-ekran-dokun { position: absolute; inset-block: 76px 64px; z-index: 2; display: grid; align-items: center; width: 32%; padding: 0; border: 0; background: transparent; color: --vurguText--; }
+  .modulex-yorum-hikaye-ekran-dokun--geri { inset-inline-start: 14px; justify-items: start; }
+  .modulex-yorum-hikaye-ekran-dokun--ileri { inset-inline-end: 14px; justify-items: end; }
+  .modulex-yorum-hikaye-ekran-dokun .material-symbols-outlined { display: grid; place-items: center; width: 40px; height: 40px; margin-inline: 8px; border-radius: 50%; background: color-mix(in srgb, --text-- 40%, transparent); font-size: 26px; visibility: hidden; }
+  .modulex-yorum-hikaye-ekran-dokun:is(:hover, :focus-visible) .material-symbols-outlined { visibility: visible; }
+  .modulex-yorum-hikaye-ekran:not(.modulex-yorum-hikaye-ekran--js) :is(.modulex-yorum-hikaye-ekran-dokun, .modulex-yorum-hikaye-ekran-oto) { display: none; }
+  .modulex-yorum-hikaye-ekran-oto { position: absolute; inset-block-start: 40px; inset-inline-end: 28px; z-index: 3; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: color-mix(in srgb, --text-- 32%, transparent); color: --vurguText--; transition: background-color 0.25s ease; }
+  .modulex-yorum-hikaye-ekran-oto:hover { background: color-mix(in srgb, --text-- 55%, transparent); }
+  .modulex-yorum-hikaye-ekran-oto .material-symbols-outlined { font-size: 20px; }
+  @media (max-width: 768px) {
+    .modulex-yorum-hikaye-ekran-cerceve { padding: 10px; border-radius: 34px; }
+    .modulex-yorum-hikaye-ekran-cubuklar { inset-block-start: 22px; inset-inline: 24px; }
+    .modulex-yorum-hikaye-ekran-sahne { min-height: 520px; padding: 60px 22px 32px; border-radius: 26px; }
+    .modulex-yorum-hikaye-ekran-oto { inset-block-start: 32px; inset-inline-end: 20px; }
+    .modulex-yorum-hikaye-ekran-halka { width: 66px; }
+    .modulex-yorum-hikaye-ekran-hav { width: 52px; height: 52px; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-yorum-hikaye-ekran :is(.modulex-yorum-hikaye-ekran-baslik, .modulex-yorum-hikaye-ekran-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-yorum-hikaye-ekran-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-yorum-hikaye-ekran { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-yorum-hikaye-ekran *, .modulex-yorum-hikaye-ekran *::before, .modulex-yorum-hikaye-ekran *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-yorum-hikaye-ekran";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const hikaye = (s, P, az) => {
+        const L = [...s.querySelectorAll("." + P + "-hikaye")];
+        if (L.length < 2) return;
+        s.classList.add(P + "--js");
+        const C = [...s.querySelectorAll("." + P + "-parca")];
+        const H = [...s.querySelectorAll("[data-hk-git]")];
+        const oto = s.querySelector("[data-hk=oto]");
+        let i = 0;
+        const goster = (n) => {
+          i = (n + L.length) % L.length;
+          L.forEach((x, j) => { const a = j === i; x.classList.toggle(P + "-hikaye--etkin", a); x.setAttribute("aria-hidden", String(!a)); x.inert = !a; });
+          C.forEach((x, j) => { x.classList.remove(P + "-parca--etkin"); x.classList.toggle(P + "-parca--bitti", j < i); });
+          H.forEach((x, j) => { if (j === i) x.setAttribute("aria-current", "true"); else x.removeAttribute("aria-current"); x.classList.toggle(P + "-halka--goruldu", j < i); });
+          if (C[i]) { void C[i].offsetWidth; C[i].classList.add(P + "-parca--etkin"); }
+        };
+        C.forEach((c) => c.addEventListener("animationend", () => goster(i + 1)));
+        s.querySelectorAll("[data-hk=geri], [data-hk=ileri]").forEach((b) => b.addEventListener("click", () => goster(i + (b.dataset.hk === "ileri" ? 1 : -1))));
+        H.forEach((b, j) => b.addEventListener("click", () => goster(j)));
+        const cerceve = s.querySelector("." + P + "-cerceve");
+        if (cerceve) cerceve.addEventListener("keydown", (e) => {
+          const rtl = getComputedStyle(s).direction === "rtl";
+          if (e.key === (rtl ? "ArrowLeft" : "ArrowRight")) goster(i + 1);
+          else if (e.key === (rtl ? "ArrowRight" : "ArrowLeft")) goster(i - 1);
+        });
+        if (az) { if (oto) oto.hidden = true; }
+        else {
+          if (oto) oto.addEventListener("click", () => {
+            const d = s.classList.toggle(P + "--dur");
+            oto.setAttribute("aria-label", d ? oto.dataset.oynat : oto.dataset.durdur);
+            const ik = oto.querySelector(".material-symbols-outlined");
+            if (ik) ik.textContent = d ? "play_arrow" : "pause";
+          });
+          if ("IntersectionObserver" in window) {
+            const io = new IntersectionObserver((g) => g.forEach((x) => s.classList.toggle(P + "--disarda", !x.isIntersecting)), { threshold: 0.25 });
+            io.observe(s);
+          }
+        }
+        goster(0);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      hikaye(s, P, az);
+    });
+  })();
+</script>

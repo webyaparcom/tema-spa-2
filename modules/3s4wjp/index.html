@@ -1,0 +1,89 @@
+<section class="modulex-deger-petek{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-deger-petek-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* deger-petek — deger-ikon-dev daire, deger-muhur-halka tırtıklı mühür, hizmet-bento dikdörtgen hücredir; bu modülde öğeler altıgen kesimli ve sıraları yarım hücre kaydırılıp çeyrek yükseklik bindirilerek petek ızgarası kurulur (ailede tek altıgen iskelet). */
+  .modulex-deger-petek { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-deger-petek *, .modulex-deger-petek *::before, .modulex-deger-petek *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-deger-petek :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-deger-petek :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-deger-petek :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-deger-petek :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-deger-petek img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-deger-petek) img { height: auto; }
+  .modulex-deger-petek [hidden] { display: none !important; }
+  .modulex-deger-petek :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-deger-petek :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-deger-petek-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-deger-petek-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-deger-petek--bassiz .modulex-deger-petek-bas { display: none; }
+  .modulex-deger-petek-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-deger-petek-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-deger-petek-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-deger-petek-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-deger-petek-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-deger-petek-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-deger-petek-dugme:hover { transform: translateY(-2px); }
+  .modulex-deger-petek-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-deger-petek-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-deger-petek-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-deger-petek-petek { --w: clamp(196px, 18vw, 244px); --a: 8px; display: grid; grid-template-columns: repeat(6, calc(var(--w) / 2)); justify-content: center; padding-block-end: calc(var(--w) * 0.3); }
+  .modulex-deger-petek-hucre { position: relative; grid-column: span 2; justify-self: center; width: calc(var(--w) - var(--a)); aspect-ratio: 0.866; margin-block-end: calc((var(--w) - var(--a)) * -0.2887 + var(--a) * 0.6); transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) calc(var(--i) * 0.1s); }
+  .modulex-deger-petek-hucre:nth-child(5n + 4) { grid-column: 2 / span 2; }
+  .modulex-deger-petek--hazir:not(.modulex-deger-petek--gor) .modulex-deger-petek-hucre { transform: scale(0.5) rotate(-30deg); }
+  .modulex-deger-petek-hucre:hover, .modulex-deger-petek-hucre:focus-within { z-index: 2; transform: scale(1.06); }
+  .modulex-deger-petek-altigen, .modulex-deger-petek-icyuz { clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+  .modulex-deger-petek-altigen { width: 100%; height: 100%; padding: 4px; background: --accent--; }
+  .modulex-deger-petek-icyuz { display: grid; place-content: center; justify-items: center; gap: 6px; width: 100%; height: 100%; padding-block: 18%; padding-inline: 13%; background: --kartBg--; text-align: center; transition: background-color 0.35s ease, color 0.35s ease; }
+  .modulex-deger-petek-hucre:nth-child(4n + 2) .modulex-deger-petek-icyuz, .modulex-deger-petek-hucre:hover .modulex-deger-petek-icyuz, .modulex-deger-petek-hucre:focus-within .modulex-deger-petek-icyuz { background-color: --vurguBg--; color: --vurguText--; }
+  .modulex-deger-petek-hucre:nth-child(4n + 2) :is(.modulex-deger-petek-ikon, .modulex-deger-petek-kmetin, .modulex-deger-petek-etiket), .modulex-deger-petek-hucre:hover :is(.modulex-deger-petek-ikon, .modulex-deger-petek-kmetin, .modulex-deger-petek-etiket), .modulex-deger-petek-hucre:focus-within :is(.modulex-deger-petek-ikon, .modulex-deger-petek-kmetin, .modulex-deger-petek-etiket) { color: inherit; }
+  .modulex-deger-petek-ikon { color: --accentInk--; font-size: 34px; }
+  .modulex-deger-petek-etiket { color: --accentInk--; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-deger-petek-kbaslik { font-size: 1.08rem; font-weight: 800; line-height: 1.2; }
+  .modulex-deger-petek-kmetin { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 4; color: --muted--; font-size: 0.84rem; line-height: 1.45; }
+  @media (max-width: 768px) {
+    .modulex-deger-petek-petek { --w: min(62vw, 250px); --a: 6px; grid-template-columns: repeat(3, calc(var(--w) / 2)); }
+    .modulex-deger-petek-hucre, .modulex-deger-petek-hucre:nth-child(5n + 4) { grid-column: 1 / span 2; }
+    .modulex-deger-petek-hucre:nth-child(even) { grid-column: 2 / span 2; }
+  }
+  .modulex-deger-petek-bag { color: inherit; text-decoration: none; }
+  .modulex-deger-petek-bag::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .modulex-deger-petek-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-petek :is(.modulex-deger-petek-baslik, .modulex-deger-petek-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-petek-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-deger-petek { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-deger-petek *, .modulex-deger-petek *::before, .modulex-deger-petek *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-deger-petek";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const gozlem = (s, P, az) => {
+        const gor = () => s.classList.add(P + "--gor");
+        s.classList.add(P + "--hazir");
+        if (az || !("IntersectionObserver" in window)) { gor(); return; }
+        const io = new IntersectionObserver((gs) => {
+          gs.forEach((g) => { if (g.isIntersecting) { gor(); io.disconnect(); } });
+        }, { threshold: 0.15 });
+        io.observe(s);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      gozlem(s, P, az);
+    });
+  })();
+</script>

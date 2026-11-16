@@ -1,0 +1,55 @@
+{
+  "name": "Galeri Odak Izgarası — üzerine gelinen sütun genişler, diğerleri söner",
+  "description": "Koyu zeminde üç sütunlu sabit yükseklikli ızgara; bir görselin üzerine gelince ya da klavyeyle odaklanınca O SÜTUN akışkan biçimde genişler (grid-template-columns geçişi, :has()), diğer görseller gri ve loş kalır. Köşede numara + ad + kategori etiketi. Eksik son satırda son görsel boşluğu doldurur (masaüstü 3, mobil 2 sütun hesabı). Betik yok. galeri-yatay-akordeon tek sıradaki şeritleri flex ile genişletir, galeri-hover-aciklama görselin üstüne perde indirir. Bu modül iki boyutlu ızgarada SÜTUN izini yeniden boyutlar (:has + grid-template-columns geçişi) ve geri kalanları söndürerek sahne ışığı etkisi verir; boş hücre bırakmayan son satır genişletmesi sunucuda hesaplanır. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "center_focus_strong",
+  "category": "galeri",
+  "subCategory": "fluid-spotlight",
+  "tags": [
+    "galeri",
+    "spotlight",
+    "fluid-grid",
+    "has",
+    "dark",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "tumu": "",
+    "bg": "var(--mx-site-text, #111318)",
+    "text": "var(--mx-site-bg, #ffffff)",
+    "muted": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 78%, var(--mx-site-text, #111318))",
+    "kartBg": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 7%, transparent)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-bg, #ffffff) 18%, transparent)",
+    "accent": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 45%, var(--mx-site-bg, #ffffff))",
+    "accentText": "var(--mx-site-text, #111318)",
+    "vurguBg": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 55%, var(--mx-site-bg, #ffffff))",
+    "vurguText": "var(--mx-site-text, #111318)",
+    "bgcolor": "var(--mx-site-text, #111318)",
+    "color": "var(--mx-site-bg, #ffffff)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "img": "görsel yolu (boşsa yer tutucu)",
+      "baslik": "dil sözlüğü (resim adı)",
+      "alt": "dil sözlüğü (boşsa başlık)",
+      "metin": "dil sözlüğü (kısa açıklama)",
+      "kat": "kategori kimliği (desing.cats id'si)",
+      "url": "iç/dış bağlantı",
+      "w": "görsel genişliği (px, oran için)",
+      "h": "görsel yüksekliği (px)",
+      "kucuk": "küçük görsel (varsa ızgarada bu)"
+    }
+  }
+}

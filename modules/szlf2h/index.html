@@ -1,0 +1,130 @@
+<header class="modulex-ust-genisleyen{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-ust-genisleyen-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</header>
+
+<style>
+  /* ust-genisleyen — Menü sürekli yer kaplamaz ama başka katmana da gitmez: aynı kapsül yerinde genişler (yatay açılım), ilk bakışta sade, etkileşimde tam menü. */
+  .modulex-ust-genisleyen { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-ust-genisleyen *, .modulex-ust-genisleyen *::before, .modulex-ust-genisleyen *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-ust-genisleyen :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-ust-genisleyen :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-ust-genisleyen :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-ust-genisleyen :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-ust-genisleyen img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-ust-genisleyen) img { height: auto; }
+  .modulex-ust-genisleyen [hidden] { display: none !important; }
+  .modulex-ust-genisleyen :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-ust-genisleyen :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-ust-genisleyen-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-ust-genisleyen-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-ust-genisleyen--bassiz .modulex-ust-genisleyen-bas { display: none; }
+  .modulex-ust-genisleyen-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-ust-genisleyen-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-ust-genisleyen-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-ust-genisleyen-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-ust-genisleyen-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-ust-genisleyen-dugme:hover { transform: translateY(-2px); }
+  .modulex-ust-genisleyen-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-ust-genisleyen-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-ust-genisleyen-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-ust-genisleyen { position: relative; z-index: 900; }
+  .modulex-ust-genisleyen-logo { display: inline-flex; flex: 0 1 auto; min-width: 0; align-items: center; color: inherit; text-decoration: none; }
+  /* dar ekranda geniş logo/uzun ad çubuğu taşırmasın: logo daralır (img max-width 100%), ad sarar */
+  .modulex-ust-genisleyen-logo img { width: auto; max-height: --logoH--; }
+  .modulex-ust-genisleyen-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-ust-genisleyen-oge { position: relative; display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-weight: 600; text-decoration: none; transition: color 0.2s ease, background 0.2s ease; }
+  .modulex-ust-genisleyen-oge:hover, .modulex-ust-genisleyen-oge[aria-current="page"] { color: --accentInk--; }
+  .modulex-ust-genisleyen-cta { display: inline-flex; flex: none; align-items: center; gap: 6px; min-height: 44px; padding: 8px 18px; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; white-space: nowrap; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .modulex-ust-genisleyen-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px --accent--; }
+  .modulex-ust-genisleyen-cta .material-symbols-outlined, .modulex-ust-genisleyen-tel .material-symbols-outlined, .modulex-ust-genisleyen-posta .material-symbols-outlined { font-size: 18px; }
+  .modulex-ust-genisleyen-tel, .modulex-ust-genisleyen-posta { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; white-space: nowrap; }
+  .modulex-ust-genisleyen-tel:hover, .modulex-ust-genisleyen-posta:hover { color: --accentInk--; }
+  .modulex-ust-genisleyen-dil:empty { display: none; }
+  .modulex-ust-genisleyen-ac { display: none; align-items: center; gap: 10px; min-width: 46px; min-height: 46px; padding: 0 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-weight: 700; }
+  .modulex-ust-genisleyen-ac-ikon { display: grid; gap: 4px; width: 20px; }
+  .modulex-ust-genisleyen-ac-ikon span { display: block; height: 2px; border-radius: 2px; background: currentColor; transition: transform 0.3s ease, opacity 0.3s ease; }
+  .modulex-ust-genisleyen--acik .modulex-ust-genisleyen-ac-ikon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .modulex-ust-genisleyen--acik .modulex-ust-genisleyen-ac-ikon span:nth-child(2) { opacity: 0; }
+  .modulex-ust-genisleyen--acik .modulex-ust-genisleyen-ac-ikon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .modulex-ust-genisleyen-kapat { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid --cizgi--; border-radius: 50%; background: transparent; color: inherit; }
+  .modulex-ust-genisleyen-perde { position: fixed; inset: 0; z-index: 1; background: color-mix(in srgb, --text-- 45%, transparent); animation: modulex-ust-genisleyen-sol 0.3s ease both; }
+  @keyframes modulex-ust-genisleyen-sol { from { opacity: 0; } to { opacity: 1; } }
+
+  .modulex-ust-genisleyen-sira { display: flex; align-items: center; gap: 12px 20px; padding-block: 14px; }
+  .modulex-ust-genisleyen-kapsul { display: flex; align-items: center; min-width: 0; margin-inline-start: auto; padding: 5px; border-radius: 999px; background-color: --text--; color: --bg--; box-shadow: 0 16px 34px -22px color-mix(in srgb, --text-- 80%, transparent); transition: box-shadow 0.3s ease; }
+  .modulex-ust-genisleyen-kapsul:hover { box-shadow: 0 20px 40px -22px color-mix(in srgb, --text-- 90%, transparent); }
+  .modulex-ust-genisleyen-tetik { display: inline-flex; flex: none; align-items: center; gap: 10px; min-height: 44px; padding-inline: 16px 18px; border: 0; border-radius: 999px; background-color: color-mix(in srgb, --bg-- 14%, transparent); color: inherit; font: inherit; font-weight: 700; transition: background-color 0.25s ease; }
+  .modulex-ust-genisleyen-tetik:hover { background-color: color-mix(in srgb, --bg-- 24%, transparent); }
+  .modulex-ust-genisleyen-tetik-ikon { position: relative; display: block; width: 14px; height: 14px; }
+  .modulex-ust-genisleyen-tetik-ikon::before, .modulex-ust-genisleyen-tetik-ikon::after { content: ""; position: absolute; inset-inline: 0; inset-block-start: 6px; height: 2px; border-radius: 2px; background-color: currentColor; transition: transform 0.35s ease; }
+  .modulex-ust-genisleyen-tetik-ikon::after { transform: rotate(90deg); }
+  .modulex-ust-genisleyen--gacik .modulex-ust-genisleyen-tetik-ikon::before { transform: rotate(45deg); }
+  .modulex-ust-genisleyen--gacik .modulex-ust-genisleyen-tetik-ikon::after { transform: rotate(135deg); }
+  .modulex-ust-genisleyen-acilim { display: grid; grid-template-columns: 0fr; transition: grid-template-columns 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .modulex-ust-genisleyen-acilim-ic { min-width: 0; overflow: hidden; }
+  .modulex-ust-genisleyen:not(.modulex-ust-genisleyen--gj) .modulex-ust-genisleyen-acilim, .modulex-ust-genisleyen-kapsul:hover .modulex-ust-genisleyen-acilim, .modulex-ust-genisleyen-kapsul:focus-within .modulex-ust-genisleyen-acilim, .modulex-ust-genisleyen--gacik .modulex-ust-genisleyen-acilim { grid-template-columns: 1fr; }
+  .modulex-ust-genisleyen-gliste { display: flex; flex-wrap: nowrap; gap: 2px; padding-inline: 6px 2px; }
+  .modulex-ust-genisleyen-gliste .modulex-ust-genisleyen-oge { padding-inline: 14px; border-radius: 999px; white-space: nowrap; }
+  .modulex-ust-genisleyen-gliste .modulex-ust-genisleyen-oge:hover { background-color: color-mix(in srgb, --bg-- 14%, transparent); color: inherit; }
+  .modulex-ust-genisleyen-gliste .modulex-ust-genisleyen-oge[aria-current="page"] { background-color: --bg--; color: --text--; }
+  .modulex-ust-genisleyen-uc { display: flex; flex: none; align-items: center; gap: 12px; }
+  @keyframes modulex-ust-genisleyen-dus { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 1024px) {
+    .modulex-ust-genisleyen-sira { flex-wrap: wrap; }
+    .modulex-ust-genisleyen-uc { flex: 0 1 auto; flex-wrap: wrap; }
+    .modulex-ust-genisleyen-acilim { position: absolute; inset-inline: 12px; inset-block-start: calc(100% + 4px); z-index: 5; display: none; padding: 10px; border-radius: 22px; background-color: --text--; color: --bg--; box-shadow: 0 24px 44px -26px color-mix(in srgb, --text-- 80%, transparent); animation: modulex-ust-genisleyen-dus 0.3s ease both; }
+    .modulex-ust-genisleyen--gacik .modulex-ust-genisleyen-acilim { display: block; }
+    .modulex-ust-genisleyen:not(.modulex-ust-genisleyen--gj) .modulex-ust-genisleyen-kapsul { flex-wrap: wrap; border-radius: 22px; }
+    .modulex-ust-genisleyen:not(.modulex-ust-genisleyen--gj) .modulex-ust-genisleyen-acilim { position: static; display: block; padding: 4px; box-shadow: none; }
+    .modulex-ust-genisleyen-acilim-ic { overflow: visible; }
+    .modulex-ust-genisleyen-gliste { flex-direction: column; padding: 0; }
+    .modulex-ust-genisleyen-gliste .modulex-ust-genisleyen-oge { width: 100%; border-radius: 14px; white-space: normal; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-genisleyen :is(.modulex-ust-genisleyen-baslik, .modulex-ust-genisleyen-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-genisleyen-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-ust-genisleyen { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-ust-genisleyen *, .modulex-ust-genisleyen *::before, .modulex-ust-genisleyen *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-ust-genisleyen";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const genislet = (s, P) => {
+        const b = s.querySelector("." + P + "-tetik");
+        const hedef = b ? document.getElementById(b.getAttribute("aria-controls")) : null;
+        if (!b || !hedef) return;
+        s.classList.add(P + "--gj");
+        const ayarla = (acik, odak) => {
+          b.setAttribute("aria-expanded", String(acik));
+          s.classList.toggle(P + "--gacik", acik);
+          if (!acik && odak) b.focus();
+        };
+        b.addEventListener("click", () => {
+          const ac = b.getAttribute("aria-expanded") !== "true";
+          ayarla(ac, false);
+          const l = hedef.querySelector("a[href]");
+          if (ac && l && window.matchMedia && window.matchMedia("(max-width: 1024px)").matches) l.focus();
+        });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape" && b.getAttribute("aria-expanded") === "true") ayarla(false, true); });
+        document.addEventListener("click", (e) => { if (!s.contains(e.target)) ayarla(false, false); });
+        hedef.addEventListener("click", (e) => { if (e.target.closest("a[href]")) ayarla(false, false); });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      genislet(s, P, az);
+    });
+  })();
+</script>

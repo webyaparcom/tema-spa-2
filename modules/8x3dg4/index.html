@@ -1,0 +1,85 @@
+<section class="modulex-galeri-odak-izgara{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-galeri-odak-izgara-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* galeri-odak-izgara — galeri-yatay-akordeon tek sıradaki şeritleri flex ile genişletir, galeri-hover-aciklama görselin üstüne perde indirir. Bu modül iki boyutlu ızgarada SÜTUN izini yeniden boyutlar (:has + grid-template-columns geçişi) ve geri kalanları söndürerek sahne ışığı etkisi verir; boş hücre bırakmayan son satır genişletmesi sunucuda hesaplanır. */
+  .modulex-galeri-odak-izgara { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-galeri-odak-izgara *, .modulex-galeri-odak-izgara *::before, .modulex-galeri-odak-izgara *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-galeri-odak-izgara :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-galeri-odak-izgara :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-galeri-odak-izgara :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-galeri-odak-izgara :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-galeri-odak-izgara img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-galeri-odak-izgara) img { height: auto; }
+  .modulex-galeri-odak-izgara [hidden] { display: none !important; }
+  .modulex-galeri-odak-izgara :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-galeri-odak-izgara :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-galeri-odak-izgara-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-galeri-odak-izgara-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-galeri-odak-izgara--bassiz .modulex-galeri-odak-izgara-bas { display: none; }
+  .modulex-galeri-odak-izgara-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-galeri-odak-izgara-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-galeri-odak-izgara-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-galeri-odak-izgara-bas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 48px; align-items: end; }
+  .modulex-galeri-odak-izgara-ust { grid-column: 1 / -1; }
+  .modulex-galeri-odak-izgara-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-galeri-odak-izgara-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-galeri-odak-izgara-dugme:hover { transform: translateY(-2px); }
+  .modulex-galeri-odak-izgara-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-galeri-odak-izgara-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-galeri-odak-izgara-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-galeri-odak-izgara-izgara { display: grid; grid-template-columns: var(--k1, 1fr) var(--k2, 1fr) var(--k3, 1fr); grid-auto-rows: clamp(210px, 21vw, 290px); gap: 12px; transition: grid-template-columns 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .modulex-galeri-odak-izgara-izgara:has(> .modulex-galeri-odak-izgara-hucre:nth-child(3n+1):is(:hover, :focus-within)) { --k1: 1.9fr; }
+  .modulex-galeri-odak-izgara-izgara:has(> .modulex-galeri-odak-izgara-hucre:nth-child(3n+2):is(:hover, :focus-within)) { --k2: 1.9fr; }
+  .modulex-galeri-odak-izgara-izgara:has(> .modulex-galeri-odak-izgara-hucre:nth-child(3n):is(:hover, :focus-within)) { --k3: 1.9fr; }
+  .modulex-galeri-odak-izgara-hucre { position: relative; grid-column: span var(--s3, 1); min-width: 0; border-radius: --yuvarlak--; outline-offset: 4px; }
+  .modulex-galeri-odak-izgara-fig { position: relative; height: 100%; overflow: hidden; border-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-galeri-odak-izgara-fig .modulex-galeri-odak-izgara-g, .modulex-galeri-odak-izgara-fig .modulex-galeri-odak-izgara-yer { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; transition: transform 0.8s ease, filter 0.5s ease; }
+  .modulex-galeri-odak-izgara-izgara:has(> .modulex-galeri-odak-izgara-hucre:is(:hover, :focus-within)) > .modulex-galeri-odak-izgara-hucre:not(:hover, :focus-within) .modulex-galeri-odak-izgara-g { filter: grayscale(0.9) brightness(0.55); }
+  .modulex-galeri-odak-izgara-hucre:is(:hover, :focus-within) .modulex-galeri-odak-izgara-g { transform: scale(1.05); }
+  .modulex-galeri-odak-izgara-etiket { position: absolute; inset-inline-start: 12px; inset-block-end: 12px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; max-width: calc(100% - 24px); padding: 8px 14px; border-radius: 12px; background: --bg--; color: --text--; transition: transform 0.4s ease; }
+  .modulex-galeri-odak-izgara-hucre:is(:hover, :focus-within) .modulex-galeri-odak-izgara-etiket { transform: translateY(-4px); }
+  .modulex-galeri-odak-izgara-sno { color: --accentInk--; font-size: 0.75rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .modulex-galeri-odak-izgara-etiket .modulex-galeri-odak-izgara-kbaslik { font-size: 0.98rem; }
+  .modulex-galeri-odak-izgara-hkat { flex-basis: 100%; color: --muted--; font-size: 0.74rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+  @media (hover: none) { .modulex-galeri-odak-izgara-izgara:has(> .modulex-galeri-odak-izgara-hucre:is(:hover, :focus-within)) > .modulex-galeri-odak-izgara-hucre:not(:hover, :focus-within) .modulex-galeri-odak-izgara-g { filter: none; } }
+  @media (max-width: 1024px) { .modulex-galeri-odak-izgara-izgara { grid-auto-rows: 210px; } }
+  @media (max-width: 768px) {
+    .modulex-galeri-odak-izgara-izgara { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 170px; gap: 8px; }
+    .modulex-galeri-odak-izgara-hucre { grid-column: span var(--s2, 1); }
+    .modulex-galeri-odak-izgara-etiket { inset-inline-start: 8px; inset-block-end: 8px; max-width: calc(100% - 16px); padding: 6px 10px; }
+    .modulex-galeri-odak-izgara-etiket .modulex-galeri-odak-izgara-kbaslik { font-size: 0.85rem; }
+    .modulex-galeri-odak-izgara-hkat { display: none; }
+  }
+  .modulex-galeri-odak-izgara-yer { display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 3; background: color-mix(in srgb, --accent-- 14%, --kartBg--); color: --accentInk--; }
+  .modulex-galeri-odak-izgara-yer .material-symbols-outlined { font-size: 40px; }
+  .modulex-galeri-odak-izgara-bag { color: inherit; text-decoration: none; }
+  .modulex-galeri-odak-izgara-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-galeri-odak-izgara-kbaslik { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+  .modulex-galeri-odak-izgara-kmetin { color: --muted--; font-size: 0.95rem; line-height: 1.6; }
+  .modulex-galeri-odak-izgara-kat { color: --accentInk--; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-galeri-odak-izgara-kontrol { display: flex; gap: 10px; justify-content: flex-end; margin-block-start: 18px; }
+  .modulex-galeri-odak-izgara-ok { display: inline-grid; place-items: center; width: 48px; height: 48px; border: 1px solid --cizgi--; border-radius: 50%; background: --kartBg--; color: --text--; transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease; }
+  .modulex-galeri-odak-izgara-ok:hover:not(:disabled) { background: --accent--; color: --accentText--; }
+  .modulex-galeri-odak-izgara-ok:disabled { opacity: 0.4; cursor: default; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-galeri-odak-izgara :is(.modulex-galeri-odak-izgara-baslik, .modulex-galeri-odak-izgara-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-galeri-odak-izgara-baslik { line-height: 1.35; }
+  @media (max-width: 1024px) {
+    .modulex-galeri-odak-izgara-bas { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-galeri-odak-izgara { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-galeri-odak-izgara *, .modulex-galeri-odak-izgara *::before, .modulex-galeri-odak-izgara *::after { animation: none !important; transition: none !important; }
+  }
+</style>

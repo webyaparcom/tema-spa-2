@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "id": "3tef0rl8hg",
+      "name": {
+        "tr": "Ritüeller",
+        "en": "Rituals",
+        "ar": "الطقوس"
+      },
+      "description": {
+        "tr": "Süre ve adımlarıyla hamam, masaj ve yüz bakımı ritüelleri.",
+        "en": "Hammam, massage and facial rituals with their steps and timings.",
+        "ar": "طقوس الحمّام والتدليك والعناية بالوجه بخطواتها ومددها."
+      },
+      "path": "hizmetler",
+      "icon": "work",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "52xjia",
+          "3s4wjp",
+          "5k6brc"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "name": {
+        "tr": "Mekân",
+        "en": "The house",
+        "ar": "المكان"
+      },
+      "status": "play",
+      "id": "hakkimizda",
+      "path": "hakkimizda",
+      "category": "",
+      "url": "",
+      "index": 1,
+      "icon": "info",
+      "desing": {
+        "header": [],
+        "body": [
+          "8x3dg4",
+          "6npidj"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Hamam, masaj odaları ve zeytin bahçesi; misafir notları (kurgusal).",
+        "en": "The hammam, massage rooms and olive garden; guest notes (fictional).",
+        "ar": "الحمّام وغرف التدليك وحديقة الزيتون؛ ملاحظات الضيوف (افتراضية)."
+      }
+    },
+    {
+      "id": "vkj2brj718",
+      "name": {
+        "tr": "Randevu",
+        "en": "Booking",
+        "ar": "الحجز"
+      },
+      "description": {
+        "tr": "En yakın boş saatten ritüel randevusu (demo).",
+        "en": "Book a ritual from the nearest free slot (demo).",
+        "ar": "احجز طقسًا من أقرب موعد متاح (تجريبي)."
+      },
+      "path": "teklif-al",
+      "icon": "event",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "6oga6t"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "name": {
+        "tr": "İletişim",
+        "en": "Contact",
+        "ar": "اتصل بنا"
+      },
+      "status": "play",
+      "id": "iletisim",
+      "path": "iletisim",
+      "category": "",
+      "url": "",
+      "index": 3,
+      "icon": "call",
+      "desing": {
+        "header": [],
+        "body": [
+          "dzd96u",
+          "k8mp01"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Adres, telefon ve açık saatler.",
+        "en": "Address, phone and opening hours.",
+        "ar": "العنوان والهاتف وساعات العمل."
+      }
+    }
+  ],
+  "desc": []
+}

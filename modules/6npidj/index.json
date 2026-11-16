@@ -1,0 +1,56 @@
+{
+  "name": "Yorum Hikâye Ekranı — telefon çerçevesinde ilerleme çubuklu, kendiliğinden geçen hikâyeler",
+  "description": "Üstte halkalı avatar sırası, altında telefon çerçevesi: her yorum renkli tam ekran bir «hikâye» (kişi satırı, büyük alıntı, puan); tepedeki parça çubukları dolarak sıradakine geçer, ekranın iki yarısına dokununca önceki/sonraki, üzerine gelince ya da duraklat düğmesiyle durur. Hareket azaltılmışsa kendiliğinden geçiş yok; JS yoksa tüm hikâyeler alt alta. Sosyal medya hikâye metaforu ve zamanlı otomatik geçiş: yorum-sekme-kisi / yorum-avatar-yorunge seçilene kadar bekler, burada ilerleme çubuğu süreyi gösterir ve kendiliğinden ilerler; yorum-portre-ray'in yatay rayından farklı olarak tek ekran, dokunma bölgeleriyle gezilir. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "amp_stories",
+  "category": "testimonial",
+  "subCategory": "stories",
+  "tags": [
+    "testimonial",
+    "stories",
+    "autoplay",
+    "phone",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-surface, #f6f7f9)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 70%, var(--mx-site-surface, #f6f7f9))",
+    "kartBg": "var(--mx-site-bg, #ffffff)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "yildiz": "color-mix(in srgb, var(--mx-color-warning, #d97706) 78%, var(--mx-site-text, #111318))",
+    "bgcolor": "var(--mx-site-surface, #f6f7f9)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "metin": "yorum metni — dil sözlüğü (zorunlu)",
+      "ad": "yorumu yapanın adı",
+      "unvan": "görev / unvan (dil sözlüğü)",
+      "firma": "firma adı",
+      "puan": "1–5 yıldız (0/boş → yıldız yok)",
+      "img": "avatar / portre görseli",
+      "logo": "firma logosu (destekleyen yerleşimde)",
+      "baslik": "yorum başlığı (destekleyen yerleşimde)",
+      "tarih": "tarih metni",
+      "kaynak": "kaynak (Google, Instagram …)"
+    }
+  }
+}

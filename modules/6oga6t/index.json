@@ -1,0 +1,54 @@
+{
+  "name": "Randevu Yakın Müsait — en erken boş zamanlar tek dokunuşta",
+  "description": "Solda «en yakın boş zamanlar» kutuları: açık günler, kapalı tarihler, ön/azami gün ve saat listesinden hesaplanan ilk dört öneri (ilki geniş vurgulu kart; gün adı «bugün/yarın», tarih ve büyük saat). Bir öneriye dokunmak tarih ve saati doldurur; «başka bir gün ve saat seç» açılır panelinde yerel tarih alanı ve saat listesi. Sağda üstü renkli şeritli bilgi kartı: hizmet, uzman, ad, telefon, e-posta, not, KVKK ve tam genişlik gönder. JS yokken öneriler gizli, panel açık ve form eksiksiz. Diğer randevu-* modülleri ziyaretçiye takvim/gün şeridi/saat ızgarası verip aramayı ona bırakır; bu modül uygunluğu kendisi hesaplar (yakin parçası: açık gün × saat, bugünün geçmiş saatleri atlanır) ve en erken dört seçeneği karar kartı olarak sunar — tam takvim yalnız açılır «başka zaman» panelinde. Sunucusuz gönderim (formAction JSON POST › WhatsApp › .ics › mailto), kapalı gün denetimi, KVKK onayı. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Gönderim yolu yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "bolt",
+  "category": "randevu",
+  "subCategory": "next-available",
+  "tags": [
+    "randevu",
+    "next-available",
+    "quick-pick",
+    "suggestions",
+    "earliest",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-surface, #f6f7f9)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 70%, var(--mx-site-surface, #f6f7f9))",
+    "kartBg": "var(--mx-site-bg, #ffffff)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "yakinAd": "",
+    "digerAd": "",
+    "yakinAdet": 4,
+    "bgcolor": "var(--mx-site-surface, #f6f7f9)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing",
+    "alanlar": {
+      "ad": "hizmet adı (dil sözlüğü, zorunlu) — eski `services[].name`",
+      "sure": "dakika — eski `duration`",
+      "fiyat": "sayı (sayfa diliyle biçimlenir) — eski `price`",
+      "ikon": "Material Symbols adı",
+      "metin": "kısa açıklama (dil sözlüğü)",
+      "img": "görsel (destekleyen yerleşimde)"
+    }
+  }
+}

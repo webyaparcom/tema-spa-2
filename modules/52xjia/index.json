@@ -1,0 +1,59 @@
+{
+  "name": "Spa Ritüel Şerit — paket başına süreyle orantılı adım şeridi ve adım açıklaması",
+  "description": "Her ritüel paketi bir satır: solda ikon, ad, rozet, toplam süre (adımlardan hesaplanır) ve fiyat; sağda adımların süresiyle orantılı genişlikte bölümlerden oluşan yatay şerit (hamam · kese · köpük · masaj …). Bölüme tıklanınca/üzerine gelince şerit altındaki satır o adımı anlatır. Kayıt alanı: `adimlar` [{ ad, dk, acik }] (dil sözlüğü). Dar ekranda şerit dikey, yüksekliği süreyle orantılı bloklara döner. JS yokken adımlar açıklamalarıyla liste. tanitim-numarali/tanitim-serit-maddeler'in eşit madde satırlarından ve otopark-sure-cetveli'nin tek eksen cetvelinden farkı: her kayıt kendi içinde süre-orantılı yığılmış bir şerit taşır (paket başına zaman bütçesi), toplam süre adımlardan türetilir ve adım seçimi açıklama satırını değiştirir. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Başlık ve metin yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "spa",
+  "category": "module",
+  "subCategory": "ritual-timeline-bar",
+  "tags": [
+    "module",
+    "spa",
+    "packages",
+    "duration-bar",
+    "steps",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1160px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "img": "",
+    "img2": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "cta2_ad": "",
+    "cta2_url": "",
+    "bg": "var(--mx-site-surface, #f6f7f9)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 70%, var(--mx-site-surface, #f6f7f9))",
+    "kartBg": "var(--mx-site-bg, #ffffff)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "paraBirimi": "",
+    "dkAd": "",
+    "toplamAd": "",
+    "bgcolor": "var(--mx-site-surface, #f6f7f9)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data",
+    "alanlar": {
+      "ikon": "madde ikonu (Material Symbols)",
+      "baslik": "madde başlığı (dil sözlüğü, zorunlu)",
+      "metin": "madde metni (dil sözlüğü)",
+      "url": "madde bağlantısı"
+    }
+  }
+}

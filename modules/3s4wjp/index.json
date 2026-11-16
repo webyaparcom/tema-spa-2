@@ -1,0 +1,51 @@
+{
+  "name": "Değer Petek — iç içe geçen altıgen bal peteği rozetleri",
+  "description": "Değerler bal peteği gibi birbirine geçen altıgen rozetler: masaüstünde 3-2 kaydırmalı sıralar, mobilde zikzak tek sütun; her altıgende ikon, başlık ve kısa açıklama, kenarı vurgu renginde. Görününce rozetler sırayla «kilit açılır» gibi dönerek büyür; üzerine gelince rozet öne çıkar ve iç zemini renklenir. deger-ikon-dev daire, deger-muhur-halka tırtıklı mühür, hizmet-bento dikdörtgen hücredir; bu modülde öğeler altıgen kesimli ve sıraları yarım hücre kaydırılıp çeyrek yükseklik bindirilerek petek ızgarası kurulur (ailede tek altıgen iskelet). Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "hexagon",
+  "category": "values",
+  "subCategory": "honeycomb",
+  "tags": [
+    "values",
+    "honeycomb",
+    "hexagon",
+    "badges",
+    "reveal",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "ikon": "Material Symbols adı",
+      "baslik": "dil sözlüğü (zorunlu)",
+      "metin": "dil sözlüğü",
+      "etiket": "dil sözlüğü (küçük üst etiket)",
+      "img": "görsel yolu (destekleyen yerleşimde)",
+      "url": "iç/dış bağlantı (kartın tamamı tıklanır)"
+    }
+  }
+}
