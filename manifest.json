@@ -1,0 +1,29 @@
+{
+  "name": "Zeytinlik Spa",
+  "short_name": "Zeytinlik Sp",
+  "description": "Zeytinlik Hamam & Spa: Gaziantep’te taş hamam, kese-köpük, zeytinyağlı masaj ve yüz bakımı ritüelleri. En yakın boş saati seçin. Demo site; içerik kurgusaldır.",
+  "start_url": "/tr/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#5F6E3E",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/img/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

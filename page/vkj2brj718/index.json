@@ -1,0 +1,39 @@
+{
+  "id": "vkj2brj718",
+  "name": {
+    "tr": "Randevu",
+    "en": "Booking",
+    "ar": "الحجز"
+  },
+  "description": {
+    "tr": "En yakın boş saatten ritüel randevusu (demo).",
+    "en": "Book a ritual from the nearest free slot (demo).",
+    "ar": "احجز طقسًا من أقرب موعد متاح (تجريبي)."
+  },
+  "keyword": {
+    "tr": "randevu",
+    "en": "booking",
+    "ar": "حجز"
+  },
+  "path": "teklif-al",
+  "icon": "event",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "6oga6t"
+    ],
+    "footer": []
+  },
+  "index": 2,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Randevu",
+    "en": "Booking",
+    "ar": "الحجز"
+  },
+  "date": "2026-11-16T18:01:39.492Z",
+  "update": "2026-11-16T18:05:42.926Z"
+}
