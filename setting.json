@@ -4,12 +4,16 @@
   "description": {
     "tr": "Zeytinlik Hamam & Spa: Gaziantep’te taş hamam, kese-köpük, zeytinyağlı masaj ve yüz bakımı ritüelleri. En yakın boş saati seçin. Demo site; içerik kurgusaldır.",
     "en": "Zeytinlik Hammam & Spa: stone hammam, scrub and foam, olive-oil massage and facial rituals in Gaziantep. Pick the nearest free slot. Demo site; content is fictional.",
-    "ar": "زيتونلك حمّام وسبا: حمّام حجري وتقشير ورغوة وتدليك بزيت الزيتون وطقوس للعناية بالوجه في غازي عنتاب. اختر أقرب موعد متاح. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "زيتونلك حمّام وسبا: حمّام حجري وتقشير ورغوة وتدليك بزيت الزيتون وطقوس للعناية بالوجه في غازي عنتاب. اختر أقرب موعد متاح. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Zeytinlik Hamam & Spa: Stein-Hamam, Peeling und Schaum, Olivenöl-Massage und Gesichtsrituale in Gaziantep. Wählen Sie den nächsten freien Termin. Demo-Seite; Inhalte sind fiktiv.",
+    "ru": "Zeytinlik Hamam & Spa: каменный хаммам, скраб и пена, массаж оливковым маслом и ритуалы для лица в Газиантепе. Выберите ближайшее свободное время. Демо-сайт; контент вымышленный."
   },
   "keyword": {
     "tr": "spa, hamam, türk hamamı, kese köpük, masaj, yüz bakımı, gaziantep",
     "en": "spa, hammam, turkish bath, scrub and foam, massage, facial, gaziantep",
-    "ar": "سبا، حمّام، حمّام تركي، تقشير ورغوة، تدليك، عناية بالوجه، غازي عنتاب"
+    "ar": "سبا، حمّام، حمّام تركي، تقشير ورغوة، تدليك، عناية بالوجه، غازي عنتاب",
+    "de": "Spa, Hamam, türkisches Bad, Peeling-Schaummassage, Massage, Gesichtspflege, Gaziantep",
+    "ru": "спа, хамам, турецкая баня, пенный массаж с пилингом, массаж, уход за лицом, Газиантеп"
   },
   "category": "Kurumsal",
   "name": "Zeytinlik Spa",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

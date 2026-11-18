@@ -3,17 +3,23 @@
   "name": {
     "tr": "Kalite Politikamız",
     "en": "Quality Policy",
-    "ar": "سياسة الجودة"
+    "ar": "سياسة الجودة",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "description": {
     "tr": "Kalite politikamız",
     "en": "Our quality policy",
-    "ar": "سياسة الجودة لدينا"
+    "ar": "سياسة الجودة لدينا",
+    "de": "Unsere Qualitätspolitik",
+    "ru": "Наша политика качества"
   },
   "keyword": {
     "tr": "Kalite Politikamız",
     "en": "quality policy, quality, continuous improvement",
-    "ar": "سياسة الجودة, الجودة, التحسين المستمر"
+    "ar": "سياسة الجودة, الجودة, التحسين المستمر",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "path": "kalitepolitikamiz",
   "icon": "verified",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Kalite Politikamız</h2>\n<p>Tek kullanımlık kese, her misafire yeni peştamal, saatlik temizlik turu.</p>",
     "en": "<h2>Our quality policy</h2>\n<p>Single-use scrub mitts, a fresh peshtemal for every guest, hourly cleaning rounds.</p>",
-    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>ليفة للاستعمال مرة واحدة، ومئزر جديد لكل ضيف، وجولة تنظيف كل ساعة.</p>"
+    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>ليفة للاستعمال مرة واحدة، ومئزر جديد لكل ضيف، وجولة تنظيف كل ساعة.</p>",
+    "de": "<h2>Unsere Qualitätspolitik</h2>\n<p>Einweg-Peelinghandschuh, für jeden Gast ein neues Peştamal, stündlicher Reinigungsrundgang.</p>",
+    "ru": "<h2>Наша политика качества</h2>\n<p>Одноразовая рукавица для пилинга, новая пештемаль для каждого гостя, почасовой обход для уборки.</p>"
   },
   "title": {
     "tr": "Kalite Politikamız",
     "en": "Quality Policy",
-    "ar": "سياسة الجودة"
+    "ar": "سياسة الجودة",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "date": "2026-11-16T18:01:39.317Z",
   "update": "2026-11-16T18:05:42.938Z",
