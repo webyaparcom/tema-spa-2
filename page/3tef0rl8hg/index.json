@@ -3,17 +3,23 @@
   "name": {
     "tr": "Ritüeller",
     "en": "Rituals",
-    "ar": "الطقوس"
+    "ar": "الطقوس",
+    "de": "Rituale",
+    "ru": "Ритуалы"
   },
   "description": {
     "tr": "Süre ve adımlarıyla hamam, masaj ve yüz bakımı ritüelleri.",
     "en": "Hammam, massage and facial rituals with their steps and timings.",
-    "ar": "طقوس الحمّام والتدليك والعناية بالوجه بخطواتها ومددها."
+    "ar": "طقوس الحمّام والتدليك والعناية بالوجه بخطواتها ومددها.",
+    "de": "Hamam-, Massage- und Gesichtspflege-Rituale mit Dauer und Ablauf.",
+    "ru": "Ритуалы хамама, массажа и ухода за лицом с указанием длительности и этапов."
   },
   "keyword": {
     "tr": "Ritüeller",
     "en": "Rituals",
-    "ar": "الطقوس"
+    "ar": "الطقوس",
+    "de": "Rituale",
+    "ru": "Ритуалы"
   },
   "path": "hizmetler",
   "icon": "work",
@@ -34,7 +40,9 @@
   "title": {
     "tr": "Ritüeller",
     "en": "Rituals",
-    "ar": "الطقوس"
+    "ar": "الطقوس",
+    "de": "Rituale",
+    "ru": "Ритуалы"
   },
   "date": "2026-11-16T18:01:39.481Z",
   "update": "2026-11-16T18:05:42.919Z"

@@ -3,17 +3,23 @@
   "name": {
     "tr": "Randevu",
     "en": "Booking",
-    "ar": "الحجز"
+    "ar": "الحجز",
+    "de": "Termin",
+    "ru": "Запись"
   },
   "description": {
     "tr": "En yakın boş saatten ritüel randevusu (demo).",
     "en": "Book a ritual from the nearest free slot (demo).",
-    "ar": "احجز طقسًا من أقرب موعد متاح (تجريبي)."
+    "ar": "احجز طقسًا من أقرب موعد متاح (تجريبي).",
+    "de": "Ritual-Termin zum nächsten freien Zeitpunkt (Demo).",
+    "ru": "Запись на ритуал на ближайшее свободное время (демо)."
   },
   "keyword": {
     "tr": "randevu",
     "en": "booking",
-    "ar": "حجز"
+    "ar": "حجز",
+    "de": "Termin",
+    "ru": "запись"
   },
   "path": "teklif-al",
   "icon": "event",
@@ -32,7 +38,9 @@
   "title": {
     "tr": "Randevu",
     "en": "Booking",
-    "ar": "الحجز"
+    "ar": "الحجز",
+    "de": "Termin",
+    "ru": "Запись"
   },
   "date": "2026-11-16T18:01:39.492Z",
   "update": "2026-11-16T18:05:42.926Z"

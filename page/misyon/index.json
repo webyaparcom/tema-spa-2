@@ -3,17 +3,23 @@
   "name": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "description": {
     "tr": "Misyonumuz",
     "en": "Our mission",
-    "ar": "مهمتنا"
+    "ar": "مهمتنا",
+    "de": "Unsere Mission",
+    "ru": "Наша миссия"
   },
   "keyword": {
     "tr": "Misyon",
     "en": "mission, our mission, corporate responsibility",
-    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية"
+    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "path": "misyon",
   "icon": "flag",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Misyonumuz</h2>\n<p>Şehrin ortasında, süresi ve adımları önceden belli, sakin bir hamam molası sunmak.</p>",
     "en": "<h2>Our mission</h2>\n<p>To offer a calm hammam break in the city centre, with steps and timings known in advance.</p>",
-    "ar": "<h2>مهمتنا</h2>\n<p>تقديم استراحة حمّام هادئة في قلب المدينة بخطوات ومدد معروفة مسبقًا.</p>"
+    "ar": "<h2>مهمتنا</h2>\n<p>تقديم استراحة حمّام هادئة في قلب المدينة بخطوات ومدد معروفة مسبقًا.</p>",
+    "de": "<h2>Unsere Mission</h2>\n<p>Mitten in der Stadt eine ruhige Hamam-Pause mit vorab bekannter Dauer und festen Schritten anzubieten.</p>",
+    "ru": "<h2>Наша миссия</h2>\n<p>Предлагать посреди города спокойную паузу в хаммаме с заранее известной продолжительностью и этапами.</p>"
   },
   "title": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "date": "2026-11-16T18:01:39.317Z",
   "update": "2026-11-16T18:05:42.935Z",
